@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://6bijgtfs8yje"]
+[gd_scene load_steps=8 format=4 uid="uid://6bijgtfs8yje"]
 
 [ext_resource type="Script" uid="uid://v0fiptoephie" path="res://Scenes/main.gd" id="1_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://bkpdahneli2jv" path="res://Scenes/camera.tscn" id="2_pbw6q"]
@@ -6,45 +6,36 @@
 [ext_resource type="PackedScene" uid="uid://cyscubplv4wq1" path="res://Scenes/player.tscn" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://2yfi8qv4w4vt" path="res://Scenes/placeable.tscn" id="3_rgh2o"]
 [ext_resource type="Texture2D" uid="uid://d1ffhacrv0jni" path="res://erase.png" id="6_v1gob"]
-[ext_resource type="Texture2D" uid="uid://c4crfb6i8d2ht" path="res://eraser_inactive.png" id="7_50glp"]
-[ext_resource type="Texture2D" uid="uid://cg6oihxt5gdmv" path="res://art.png" id="7_jw32o"]
-[ext_resource type="Texture2D" uid="uid://dvtu7mvccif1f" path="res://eraser.png" id="8_vy5pj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1gob"]
+bg_color = Color(0.23753911, 0.23753914, 0.23753902, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vy5pj")
 
 [node name="Camera" parent="." instance=ExtResource("2_pbw6q")]
+position = Vector2(0, -1)
 
 [node name="Placeable" parent="." instance=ExtResource("3_rgh2o")]
+tile_map_data = PackedByteArray("AAAGAAQAAAAAAAAAAAA=")
 
 [node name="Map" type="TileMapLayer" parent="."]
-modulate = Color(0.581033, 0.581033, 0.581033, 1)
-tile_map_data = PackedByteArray("AAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAAAAAQAAAABAAAAAAAAAAMAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAAKAAUAAAABAAAAAAABAAQAAAACAAAAAAAGAAQAAAABAAAAAAAAAPz/AAABAAAAAAAAAPv/AAABAAAAAAAAAP3/AAABAAAAAAAAAP7/AAABAAAAAAAAAP//AAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAANAAUAAAABAAAAAAAOAAUAAAABAAAAAAAPAAUAAAABAAAAAAAQAAUAAAABAAAAAAARAAUAAAABAAAAAAASAAUAAAABAAAAAAATAAUAAAABAAAAAAAUAAUAAAABAAAAAAAVAAUAAAABAAAAAAAPAAQAAAABAAAAAAAXAP3/AAABAAAAAAAXAP7/AAABAAAAAAAXAP//AAABAAAAAAAXAAAAAAABAAAAAAAXAAEAAAABAAAAAAAXAAIAAAABAAAAAAAXAAMAAAABAAAAAAAXAAQAAAABAAAAAAAXAAUAAAABAAAAAAAWAAUAAAABAAAAAAATAAIAAAABAAAAAAATAAEAAAABAAAAAAATAAAAAAABAAAAAAATAP//AAABAAAAAAATAP7/AAABAAAAAAATAP3/AAABAAAAAAATAPz/AAABAAAAAAATAPv/AAABAAAAAAATAPr/AAABAAAAAAATAPn/AAABAAAAAAATAPj/AAABAAAAAAATAPf/AAABAAAAAAATAPb/AAABAAAAAAATAPX/AAABAAAAAAAXAPX/AAABAAAAAAAXAPb/AAABAAAAAAAXAPf/AAABAAAAAAAXAPj/AAABAAAAAAAXAPn/AAABAAAAAAAXAPr/AAABAAAAAAAXAPv/AAABAAAAAAAXAPz/AAABAAAAAAA=")
+modulate = Color(0.86898494, 0.8689849, 0.8689849, 1)
+tile_map_data = PackedByteArray("AAAAAAUAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAAAAAEAAAABAAUAAAAAAAEAAAACAAUAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAUAAAAAAAEAAAADAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAAHAAUAAAAAAAEAAAAIAAUAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAUAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAUAAAAAAAEAAAANAAUAAAAAAAEAAAAOAAUAAAAAAAEAAAAPAAUAAAAAAAEAAAAQAAUAAAAAAAEAAAAQAAQAAAAAAAEAAAAQAAMAAAAAAAEAAAAQAAIAAAAAAAEAAAAQAAEAAAAAAAEAAAA=")
 tile_set = ExtResource("2_rgh2o")
 
 [node name="Player" parent="." instance=ExtResource("3_kln2b")]
 position = Vector2(12, 36)
 
 [node name="Erase" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("6_v1gob")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Eraser_inactive" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(112, 40)
-scale = Vector2(4, 4)
-texture = ExtResource("7_50glp")
-
-[node name="Eraser" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(112, 40)
-scale = Vector2(4, 4)
-texture = ExtResource("8_vy5pj")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(40, 40)
-scale = Vector2(8, 8)
-texture = ExtResource("7_jw32o")
-region_enabled = true
-region_rect = Rect2(0, 0, 8, 8)
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_top = 440.0
+offset_right = 1533.0
+offset_bottom = 870.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v1gob")

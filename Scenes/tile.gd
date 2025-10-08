@@ -13,12 +13,12 @@ func _process(delta: float) -> void:
 			if i < len(types):
 				type = types.keys()[i]
 				var x = $"../CanvasLayer/Sprite2D".region_rect
-				$"../CanvasLayer/Sprite2D".region_rect = Rect2(types[type].x * 8, types[type].y * 8,8,8)
+				$"../CanvasLayer/Sprite2D".region_rect = Rect2(types[type].x * 16, types[type].y * 16,16,16)
 	if Input.is_action_just_pressed("erase toggle"):
 		erase = !erase
 		$"../CanvasLayer/Eraser".visible = erase
 		$"../CanvasLayer/Eraser_inactive".visible = !erase
-	$"../Erase".position = (get_global_mouse_position() - Vector2(4,4)).snapped(Vector2(8,8))
+	$"../Erase".position = (get_global_mouse_position() - Vector2(4,4)).snapped(Vector2(16,16))
 	if ButtonHeld:
 		if !erase:
 			set_cell(local_to_map(get_global_mouse_position()),0,types[type])
